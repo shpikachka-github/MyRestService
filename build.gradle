@@ -1,14 +1,19 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'nano'
 version '1.0'
 
+mainClassName = 'nano.Main'
+
 repositories {
-    mavenCentral()
+    jcenter()
 }
 
 dependencies {
+    compile 'org.postgresql:postgresql:42.2.14'
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
