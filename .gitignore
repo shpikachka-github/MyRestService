@@ -1,0 +1,17 @@
+.gradle
+/build/
+
+# Gradle
+/gradle/wrapper/
+/gradlew
+/gradlew.bat
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+.idea
+
+# Java
+/src/test/
