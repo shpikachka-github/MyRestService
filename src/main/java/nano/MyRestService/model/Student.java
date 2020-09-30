@@ -1,14 +1,12 @@
 package nano.MyRestService.model;
 
-import java.time.LocalDate;
-
 public class Student {
 
     private Long id;
     private String fullName;
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
 
-    public Student(Long id, String fullName, LocalDate dateOfBirth) {
+    public Student(Long id, String fullName, String dateOfBirth) {
         super();
         this.id = id;
         this.fullName = fullName;
@@ -31,11 +29,11 @@ public class Student {
         this.fullName = fullName;
     }
 
-    public LocalDate getBalance() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setBalance(LocalDate dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }
