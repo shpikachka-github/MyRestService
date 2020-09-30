@@ -2,7 +2,6 @@ package nano.MyRestService.contollers;
 
 import nano.MyRestService.model.Student;
 import nano.MyRestService.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +13,6 @@ public class MainController {
 
     private final StudentService studentService;
 
-    @Autowired
     public MainController(StudentService studentService) {
         this.studentService = studentService;
     }

@@ -1,9 +1,10 @@
 package nano.MyRestService.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "student_account")
+@Table(name = "student_accounts")
 public class Student {
 
     @Id
@@ -15,14 +16,7 @@ public class Student {
     private String fullName;
 
     @Column(name = "date_of_birth")
-    private String dateOfBirth;
-
-    public Student(Long id, String fullName, String dateOfBirth) {
-        super();
-        this.id = id;
-        this.fullName = fullName;
-        this.dateOfBirth = dateOfBirth;
-    }
+    private LocalDate dateOfBirth;
 
     public Long getId() {
         return id;
@@ -40,11 +34,11 @@ public class Student {
         this.fullName = fullName;
     }
 
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }
