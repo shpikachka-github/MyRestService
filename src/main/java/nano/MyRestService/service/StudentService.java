@@ -10,7 +10,7 @@ public interface StudentService {
      * Добавление студента
      * @param student - студент для добавления
      */
-    void addStudent(Student student);
+    void add(Student student);
 
     /**
      * Возвращает список всех имеющихся студентов

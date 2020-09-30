@@ -21,11 +21,12 @@ public class MainController {
 
     @PostMapping(value = "/students")
     public ResponseEntity<?> add(@RequestBody Student student) {
-        studentService.addStudent(student);
+        studentService.add(student);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/students")
+    @ResponseBody
     public ResponseEntity<List<Student>> read() {
         final List<Student> students = studentService.readAll();
 

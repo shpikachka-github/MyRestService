@@ -1,9 +1,20 @@
 package nano.MyRestService.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "student_account")
 public class Student {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "full_name")
     private String fullName;
+
+    @Column(name = "date_of_birth")
     private String dateOfBirth;
 
     public Student(Long id, String fullName, String dateOfBirth) {
