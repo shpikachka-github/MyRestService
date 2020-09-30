@@ -2,13 +2,13 @@ package nano.MyRestService.model;
 
 import java.time.LocalDate;
 
-public class StudentAccountInfo {
+public class Student {
 
     private Long id;
     private String fullName;
     private LocalDate dateOfBirth;
 
-    public StudentAccountInfo(Long id, String fullName, LocalDate dateOfBirth) {
+    public Student(Long id, String fullName, LocalDate dateOfBirth) {
         super();
         this.id = id;
         this.fullName = fullName;
