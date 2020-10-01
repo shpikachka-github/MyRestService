@@ -1,44 +1,39 @@
 package nano.MyRestService.contollers;
 
 import nano.MyRestService.model.Student;
-import nano.MyRestService.service.StudentService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 public class MainController {
 
-    private final StudentService studentService;
+    private static List<Student> students = new ArrayList<>();
 
-    public MainController(StudentService studentService) {
-        this.studentService = studentService;
+    @Value("${welcome.message}")
+    private String message;
+
+    @Value("${error.message}")
+    private String errorMessage;
+
+    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    public String index(Model model) {
+
+        model.addAttribute("message", message);
+
+        return "index";
     }
 
-    @PostMapping(value = "/students")
-    public ResponseEntity<?> add(@RequestBody Student student) {
-        studentService.add(student);
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+    @RequestMapping(value = { "/students_list" }, method = RequestMethod.GET)
+    public String students_list(Model model) {
 
-    @GetMapping(value = "/students")
-    @ResponseBody
-    public ResponseEntity<List<Student>> read() {
-        final List<Student> students = studentService.readAll();
+        model.addAttribute("students", students);
 
-        return students != null &&  !students.isEmpty()
-                ? new ResponseEntity<>(students, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-
-    @DeleteMapping(value = "/students/{id}")
-    public ResponseEntity<?> delete(@PathVariable(name = "id") Long id) {
-        final boolean deleted = studentService.delete(id);
-
-        return deleted
-                ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+        return "students_list";
     }
 }
