@@ -17,13 +17,13 @@ public class MainRestController {
         this.studentService = studentService;
     }
 
-    @PostMapping(value = "/students")
+    @PostMapping(value = "/students/xml")
     public ResponseEntity<?> add(@RequestBody Student student) {
         studentService.add(student);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping(value = "/students")
+    @GetMapping(value = "/students/xml")
     @ResponseBody
     public ResponseEntity<List<Student>> read() {
         final List<Student> students = studentService.readAll();
@@ -33,7 +33,7 @@ public class MainRestController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping(value = "/students/{id}")
+    @DeleteMapping(value = "/students/xml/{id}")
     public ResponseEntity<?> delete(@PathVariable(name = "id") Long id) {
         final boolean deleted = studentService.delete(id);
 
