@@ -29,11 +29,11 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value = { "/students_list" }, method = RequestMethod.GET)
-    public String students_list(Model model) {
+    @RequestMapping(value = { "/studentsList" }, method = RequestMethod.GET)
+    public String studentsList(Model model) {
 
         model.addAttribute("students", students);
 
-        return "students_list";
+        return "studentsList";
     }
 }
