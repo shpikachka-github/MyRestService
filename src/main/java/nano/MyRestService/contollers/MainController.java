@@ -36,15 +36,6 @@ public class MainController {
         return "index";
     }
 
-    @RequestMapping(value = {"/students"}, method = RequestMethod.GET)
-    public String studentsList(Model model) {
-        List<Student> students = studentService.readAll();
-        model.addAttribute("students", students);
-        StudentForm studentForm = new StudentForm();
-        model.addAttribute("studentForm", studentForm);
-        return "students";
-    }
-
     @RequestMapping(value = {"/students"}, method = RequestMethod.POST)
     public String addStudent(Model model,
                              @ModelAttribute("studentForm") StudentForm studentForm) {
@@ -61,6 +52,35 @@ public class MainController {
         }
 
         model.addAttribute("errorMessage", errorMessage);
+
         return "students";
+    }
+
+    @RequestMapping(value = {"/students"}, method = RequestMethod.GET)
+    public String studentsList(Model model) {
+        List<Student> students = studentService.readAll();
+        model.addAttribute("students", students);
+
+        StudentForm studentForm = new StudentForm();
+        model.addAttribute("studentForm", studentForm);
+
+        return "students";
+    }
+
+    @RequestMapping(value = {"/delStudent/{id}"}, method = RequestMethod.POST)
+    public String delStudent(Model model,
+                             @ModelAttribute("studentForm") StudentForm studentForm) {
+
+        Long id = studentForm.getId();
+
+        if (id != null && id > 0) {
+            studentService.delete(id);
+
+            return "redirect:/students";
+        }
+
+        model.addAttribute("errorMessage", errorMessage);
+
+        return "delStudent";
     }
 }
