@@ -26,9 +26,9 @@ public class Student {
 
     }
 
-    public Student(String fullName, String dateOfBirth) {
+    public Student(String fullName, LocalDate dateOfBirth) {
         this.fullName = fullName;
-        this.dateOfBirth = LocalDate.parse(dateOfBirth);
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Long getId() {

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -53,7 +54,7 @@ public class MainController {
 
         if (fullName != null && fullName.length() > 0
                 && dateOfBirth != null && dateOfBirth.length() > 0) {
-            Student newStudent = new Student(fullName, dateOfBirth);
+            Student newStudent = new Student(fullName, LocalDate.parse(dateOfBirth));
             studentService.add(newStudent);
 
             return "redirect:/students";
