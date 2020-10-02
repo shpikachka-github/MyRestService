@@ -67,7 +67,7 @@ public class MainController {
         return "students";
     }
 
-    @RequestMapping(value = {"/students{id}"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/students/{id}"}, method = RequestMethod.POST)
     public String delStudent(Model model,
                              @ModelAttribute("studentForm") StudentForm studentForm) {
 
