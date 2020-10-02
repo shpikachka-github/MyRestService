@@ -46,7 +46,7 @@
 <br/>
 <h2>Delete student</h2>
 <div>
-    <form th:action="@{'/delStudent/{id}'(id=${studentForm.id})}" th:object="${studentForm}" method="POST">
+    <form th:action="@{/students{id}(id=${studentForm.id})}" th:object="${studentForm}" method="POST">
         ID:
         <br/>
         <input type="number" th:field="*{id}"/>

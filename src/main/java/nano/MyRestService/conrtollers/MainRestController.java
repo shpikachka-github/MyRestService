@@ -1,4 +1,4 @@
-package nano.MyRestService.contollers;
+package nano.MyRestService.conrtollers;
 
 import nano.MyRestService.model.Student;
 import nano.MyRestService.service.StudentService;

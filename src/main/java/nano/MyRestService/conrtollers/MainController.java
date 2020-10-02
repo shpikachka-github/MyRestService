@@ -1,4 +1,4 @@
-package nano.MyRestService.contollers;
+package nano.MyRestService.conrtollers;
 
 import nano.MyRestService.form.StudentForm;
 import nano.MyRestService.model.Student;
@@ -67,7 +67,7 @@ public class MainController {
         return "students";
     }
 
-    @RequestMapping(value = {"/delStudent/{id}"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/students{id}"}, method = RequestMethod.POST)
     public String delStudent(Model model,
                              @ModelAttribute("studentForm") StudentForm studentForm) {
 
