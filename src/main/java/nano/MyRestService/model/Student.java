@@ -22,6 +22,15 @@ public class Student {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate dateOfBirth;
 
+    public Student() {
+
+    }
+
+    public Student(String fullName, String dateOfBirth) {
+        this.fullName = fullName;
+        this.dateOfBirth = LocalDate.parse(dateOfBirth);
+    }
+
     public Long getId() {
         return id;
     }

@@ -13,7 +13,11 @@
 
     <groupId>nano</groupId>
     <artifactId>MyRestService</artifactId>
-    <version>1.0</version>
+    <version>0.1</version>
+    <packaging>jar</packaging>
+
+    <name>MyRestService</name>
+    <description>Spring Boot, Rest, JDBC, Thymeleaf</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -63,4 +67,13 @@
             <version>42.2.14</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

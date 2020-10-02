@@ -1,44 +1,65 @@
 package nano.MyRestService.contollers;
 
+import nano.MyRestService.form.StudentForm;
 import nano.MyRestService.model.Student;
 import nano.MyRestService.service.StudentService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class MainController {
 
     private final StudentService studentService;
+
+    @Value("${welcome.message}")
+    private String message;
+
+    @Value("${error.message}")
+    private String errorMessage;
 
     public MainController(StudentService studentService) {
         this.studentService = studentService;
     }
 
-    @PostMapping(value = "/students")
-    public ResponseEntity<?> add(@RequestBody Student student) {
-        studentService.add(student);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    public String index(Model model) {
+
+        model.addAttribute("message", message);
+
+        return "index";
     }
 
-    @GetMapping(value = "/students")
-    @ResponseBody
-    public ResponseEntity<List<Student>> read() {
-        final List<Student> students = studentService.readAll();
-
-        return students != null &&  !students.isEmpty()
-                ? new ResponseEntity<>(students, HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    @RequestMapping(value = {"/students"}, method = RequestMethod.GET)
+    public String studentsList(Model model) {
+        List<Student> students = studentService.readAll();
+        model.addAttribute("students", students);
+        StudentForm studentForm = new StudentForm();
+        model.addAttribute("studentForm", studentForm);
+        return "students";
     }
 
-    @DeleteMapping(value = "/students/{id}")
-    public ResponseEntity<?> delete(@PathVariable(name = "id") Long id) {
-        final boolean deleted = studentService.delete(id);
+    @RequestMapping(value = {"/students"}, method = RequestMethod.POST)
+    public String addStudent(Model model,
+                             @ModelAttribute("studentForm") StudentForm studentForm) {
 
-        return deleted
-                ? new ResponseEntity<>(HttpStatus.OK)
-                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+        String fullName = studentForm.getFullName();
+        String dateOfBirth = studentForm.getDateOfBirth();
+
+        if (fullName != null && fullName.length() > 0
+                && dateOfBirth != null && dateOfBirth.length() > 0) {
+            Student newStudent = new Student(fullName, dateOfBirth);
+            studentService.add(newStudent);
+
+            return "redirect:/students";
+        }
+
+        model.addAttribute("errorMessage", errorMessage);
+        return "students";
     }
 }
