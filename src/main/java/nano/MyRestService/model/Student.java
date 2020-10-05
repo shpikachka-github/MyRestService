@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "student_accounts")
+@Table(name = "students")
 public class Student {
 
     @Id
@@ -19,7 +19,7 @@ public class Student {
     private String fullName;
 
     @Column(name = "date_of_birth")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
     public Student() {
