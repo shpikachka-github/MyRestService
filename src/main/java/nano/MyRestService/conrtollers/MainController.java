@@ -6,9 +6,7 @@ import nano.MyRestService.service.StudentService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -67,20 +65,13 @@ public class MainController {
         return "students";
     }
 
-    @RequestMapping(value = {"/students/{id}"}, method = RequestMethod.DELETE)
-    public String delStudent(Model model,
-                             @ModelAttribute("studentForm") StudentForm studentForm) {
-
-        Long id = studentForm.getId();
-
+    @GetMapping(value = {"/students/delete/{id}"})
+    public String delStudent(Model model, @PathVariable("id") Long id) {
         if (id != null && id > 0) {
             studentService.delete(id);
-
             return "redirect:/students";
         }
-
         model.addAttribute("errorMessage", errorMessage);
-
         return "delStudent";
     }
 }

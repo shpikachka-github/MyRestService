@@ -40,21 +40,12 @@
                     <td th:utext="${student.id}">...</td>
                     <td th:utext="${student.fullName}">...</td>
                     <td th:utext="${student.dateOfBirth}">...</td>
+                    <td><a th:href="@{/students/delete/{id}(id=${student.id})}">Delete</a></td>
                 </tr>
             </table>
         </div>
         <br/>
-        <h2>Delete student</h2>
-        <div>
-            <form th:action="@{/students/{id}(id=*{id})}" th:object="${studentForm}" method="POST">
-                ID:
-                <br/>
-                <input type="number" th:field="*{id}"/>
-                <br/>
-                <br/>
-                <input type="submit" value="Delete"/>
-            </form>
-        </div>
+
         <br/>
         <div th:if="${errorMessage}" th:utext="${errorMessage}"
              style="color:red;font-style:italic;">
