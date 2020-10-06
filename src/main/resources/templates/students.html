@@ -1,26 +1,26 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Students</title>
-        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-    </head>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Students</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
     <body>
         <h1>Students</h1>
-        <br/>
         <h2>Add a student:</h2>
         <div>
             <form th:action="@{/students}" th:object="${studentForm}" method="POST">
                 Full Name:
                 <br/>
-                <input type="text" th:field="*{fullName}" />
+                <input type="text" th:field="*{fullName}"/>
                 <br/>
                 Date Of Birth (yyyy-mm-dd):
                 <br/>
-                <input type="text" th:field="*{dateOfBirth}" />
+                <input type="text" th:field="*{dateOfBirth}"/>
                 <br/>
                 <br/>
-                <input type="submit" value="Add" />
+                <input type="submit" value="Add"/>
             </form>
         </div>
         <br/>
@@ -36,10 +36,11 @@
                     <th>Full Name</th>
                     <th>Date Of Birth</th>
                 </tr>
-                <tr th:each ="student : ${students}">
+                <tr th:each="student : ${students}">
                     <td th:utext="${student.id}">...</td>
                     <td th:utext="${student.fullName}">...</td>
                     <td th:utext="${student.dateOfBirth}">...</td>
+                    <td><a th:href="@{/students/delete/{id}(id=${student.id})}">delete</a></td>
                 </tr>
             </table>
         </div>
