@@ -13,8 +13,8 @@ create table specialties (
 );
 
 create table students_specialties (
-	student_id bigint not null references students(id),
-	specialty_id integer not null references specialties(id)
+	student_id bigint not null references students(id) on delete cascade,
+	specialty_id integer not null references specialties(id) on delete cascade
 );
 
 insert into students
