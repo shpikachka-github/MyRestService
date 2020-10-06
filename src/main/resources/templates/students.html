@@ -40,15 +40,9 @@
                     <td th:utext="${student.id}">...</td>
                     <td th:utext="${student.fullName}">...</td>
                     <td th:utext="${student.dateOfBirth}">...</td>
-                    <td><a th:href="@{/students/delete/{id}(id=${student.id})}">Delete</a></td>
+                    <td><a th:href="@{/students/delete/{id}(id=${student.id})}">delete</a></td>
                 </tr>
             </table>
-        </div>
-        <br/>
-
-        <br/>
-        <div th:if="${errorMessage}" th:utext="${errorMessage}"
-             style="color:red;font-style:italic;">
         </div>
     </body>
 </html>

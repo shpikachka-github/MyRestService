@@ -72,6 +72,6 @@ public class MainController {
             return "redirect:/students";
         }
         model.addAttribute("errorMessage", errorMessage);
-        return "delStudent";
+        return "students";
     }
 }
