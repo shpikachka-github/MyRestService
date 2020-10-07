@@ -11,7 +11,7 @@
         </preConditions>
 
         <createSequence sequenceName="students_id_seq"
-                        startValue="1"
+                        startValue="4"
                         incrementBy="1"/>
     </changeSet>
 </databaseChangeLog>
