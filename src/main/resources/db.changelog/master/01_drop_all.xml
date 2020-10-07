@@ -5,11 +5,8 @@
 
     <changeSet id="01_drop_all" author="nano">
         <preConditions onFail="MARK_RAN">
-            <tableExists tableName="databasechangelog"/>
-            <tableExists tableName="databasechangeloglock"/>
+
         </preConditions>
 
-        <dropTable tableName="databasechangelog"/>
-        <dropTable tableName="databasechangeloglock"/>
     </changeSet>
 </databaseChangeLog>
