@@ -7,4 +7,5 @@
 
     <include file="master/01_create_students_id_seq.xml" relativeToChangelogFile="true"/>
     <include file="master/02_create_table_students.xml" relativeToChangelogFile="true"/>
+    <include file="master/03_insert_table_students.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

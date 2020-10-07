@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="nano" id="03_insert_table_students">
+        <insert tableName="students">
+            <column name="id" value="nextval('students_id_seq')"/>
+            <column name="full_name" value="Tom"/>
+            <column name="date_of_birth" value="1999-8-1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
