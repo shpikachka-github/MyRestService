@@ -6,6 +6,5 @@
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
     <include file="master/01_create_students_id_seq.xml" relativeToChangelogFile="true"/>
-    <include file="master/02_create_specialties_id_seq.xml" relativeToChangelogFile="true"/>
-    <include file="master/03_create_table_students.xml" relativeToChangelogFile="true"/>
+    <include file="master/02_create_table_students.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
