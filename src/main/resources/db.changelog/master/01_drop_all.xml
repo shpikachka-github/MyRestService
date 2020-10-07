@@ -3,14 +3,13 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
-    <changeSet author="nano" id="01_create_students_id_seq">
-
+    <changeSet id="01_drop_all" author="nano">
         <preConditions onFail="MARK_RAN">
-            <sequenceExists sequenceName="students_id_seq"/>
+            <tableExists tableName="databasechangelog"/>
+            <tableExists tableName="databasechangeloglock"/>
         </preConditions>
 
-<!--        <createSequence sequenceName="students_id_seq"-->
-<!--                        startValue="1"-->
-<!--                        incrementBy="1"/>-->
+        <dropTable tableName="databasechangelog"/>
+        <dropTable tableName="databasechangeloglock"/>
     </changeSet>
 </databaseChangeLog>
